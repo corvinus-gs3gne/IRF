@@ -34,6 +34,7 @@ namespace UserMaintenance
             this.lblFullName = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnWrite = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxUser
@@ -84,11 +85,23 @@ namespace UserMaintenance
             this.btnWrite.UseVisualStyleBackColor = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRemove.Location = new System.Drawing.Point(274, 275);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(269, 48);
+            this.btnRemove.TabIndex = 7;
+            this.btnRemove.Text = "button1";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 341);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnWrite);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblFullName);
@@ -108,6 +121,7 @@ namespace UserMaintenance
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnWrite;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
 
