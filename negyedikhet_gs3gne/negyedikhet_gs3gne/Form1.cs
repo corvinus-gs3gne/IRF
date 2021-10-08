@@ -21,9 +21,9 @@ namespace negyedikhet_gs3gne
         Excel.Application xlApp;
         Excel.Workbook xlWBook;
         Excel.Worksheet xlWSheet;
+        string[] headers;
 
-        
-        
+
 
         public Form1()
         {
@@ -55,7 +55,7 @@ namespace negyedikhet_gs3gne
 
                 //tábla létrehoz
                 CreateTable();
-                
+                FormatTable();
 
                 //control átadása felhasználónak
 
@@ -78,11 +78,11 @@ namespace negyedikhet_gs3gne
             }
         }
 
-        
+
         private void CreateTable()
         {
-            string[] headers = new string[]
-            {
+            headers = new string[]
+           {
                 "Kód",
                 "Eladó",
                 "Oldal",
@@ -92,14 +92,14 @@ namespace negyedikhet_gs3gne
                 "Alapterület (m2)",
                 "Ár (mFt)",
                 "Négyzetméter ár (Ft/m2)"
-                    
 
 
-            };
+
+           };
 
             for (int i = 0; i < headers.Length; i++)
             {
-                xlWSheet.Cells[1, i+1] = headers[i];
+                xlWSheet.Cells[1, i + 1] = headers[i];
             }
 
             object[,] values = new object[Flats.Count, headers.Length];
@@ -120,23 +120,23 @@ namespace negyedikhet_gs3gne
                 else
                 {
                     values[counter, 4] = "Nincs";
-                }                
+                }
                 values[counter, 5] = f.NumberOfRooms;
                 values[counter, floorColumn] = f.FloorArea;
                 values[counter, 7] = f.Price;
                 values[counter, 8] = String.Format("={0}/{1}*{2}",
-                    "H" + counter + 2.ToString(),
-                    GetCell(counter + 2, floorColumn+1) ,
+                    "H" + (counter + 2).ToString(),
+                    GetCell(counter + 2, floorColumn + 1),
                     _million.ToString()); //"H2/G2*1000000"
 
                 counter++;
             }
 
-            var range= xlWSheet.get_Range(
+            var range = xlWSheet.get_Range(
                 GetCell(2, 1),
-                GetCell(1+ values.GetLength(0), values.GetLength(1)));
+                GetCell(1 + values.GetLength(0), values.GetLength(1)));
 
-            range.Value2= values;
+            range.Value2 = values;
         }
 
 
@@ -158,6 +158,33 @@ namespace negyedikhet_gs3gne
         }
 
 
-        
+
+
+        private void FormatTable()
+        {
+            Excel.Range headerRange = xlWSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.EntireColumn.AutoFit();
+            headerRange.RowHeight = 40;
+            headerRange.Interior.Color = Color.LightBlue;
+            headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            int LastRowID = xlWSheet.UsedRange.Rows.Count;
+            Excel.Range CompleteTableRange = xlWSheet.get_Range(GetCell(1, 1), GetCell(LastRowID, headers.Length));
+            CompleteTableRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+
+            Excel.Range firstColumnRange = xlWSheet.get_Range(GetCell(2, 1), GetCell(LastRowID, 1));
+            firstColumnRange.Interior.Color = Color.LightYellow;
+            firstColumnRange.Font.Bold = true;
+
+            Excel.Range lastColumn = xlWSheet.get_Range(GetCell(2, headers.Length), GetCell(LastRowID, headers.Length));
+            lastColumn.Interior.Color = Color.LightGreen;
+            lastColumn.NumberFormat = "0.00";
+        }
+
+
     }
 }
