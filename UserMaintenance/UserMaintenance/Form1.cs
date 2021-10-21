@@ -30,7 +30,7 @@ namespace UserMaintenance
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var u = new User()
+            User u = new User()
             {
                 FullName = textBoxFullName.Text,
                 
@@ -43,9 +43,9 @@ namespace UserMaintenance
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.InitialDirectory = Application.StartupPath;
-            sfd.Filter = "Comma Separated Values (*.csv) |*.csv";
-            sfd.DefaultExt = "csv";
-            sfd.AddExtension = true;
+            //sfd.Filter = "Comma Separated Values (*.csv) |*.csv";
+            //sfd.DefaultExt = "csv";
+            //sfd.AddExtension = true;
             if (sfd.ShowDialog() != DialogResult.OK) return;
             using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
