@@ -39,7 +39,7 @@ namespace week6_gs3gne
                                       orderby x
                                       select x)
                                         .ToList();
-            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
+            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 20].ToString()); //5%-os konfidencia intervallum
         }
 
         private void CreatePortfolio()
