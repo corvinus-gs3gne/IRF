@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using week07.Entities;
 using week07.MnbServiceReference;
@@ -24,7 +25,8 @@ namespace week07
             GetExchangeRates();
             XMLfeldolgozo();
             dataGridView1.DataSource = Rates;
-
+            ShowDataOnChart();
+            chartRateData.DataSource = Rates;
 
         }
 
@@ -67,5 +69,25 @@ namespace week07
 
 
         }
+
+        private void ShowDataOnChart()
+        {
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+
+            var chartArea = chartRateData.ChartAreas[0];
+            chartArea.BorderWidth = 2;
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+            
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+        }
+
+
     }
 }
