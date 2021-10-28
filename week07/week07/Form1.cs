@@ -17,16 +17,19 @@ namespace week07
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         string result;
+        
 
         public Form1()
         {
             InitializeComponent();
             GetExchangeRates();
+            GetCurrencies();
             XMLfeldolgozo();            
             ShowDataOnChart();
             RefreshData();
-            
+            comboBox1.DataSource = Currencies;  
 
         }
 
@@ -93,6 +96,7 @@ namespace week07
             Rates.Clear();
             dataGridView1.DataSource = Rates;
             chartRateData.DataSource = Rates;
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -109,5 +113,29 @@ namespace week07
         {
             RefreshData();
         }
+
+        private void GetCurrencies()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();      
+                     
+            var response = mnbService.GetCurrencies(request);
+            result = response.GetCurrenciesResult;
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                
+                var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
+                var elem = childElement.InnerText;
+                Currencies.Add(elem);
+            }
+
+        }
+
+        
     }
 }
