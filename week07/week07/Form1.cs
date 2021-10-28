@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using week07.Entities;
 using week07.MnbServiceReference;
 
@@ -15,13 +16,15 @@ namespace week07
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
-        
-        
+        string result;
+
         public Form1()
         {
             InitializeComponent();
+            GetExchangeRates();
+            XMLfeldolgozo();
             dataGridView1.DataSource = Rates;
-           
+
 
         }
 
@@ -38,7 +41,30 @@ namespace week07
             };
 
             var response = mnbService.GetExchangeRates(request);
-            var result = response.GetExchangeRatesResult;
+            result = response.GetExchangeRatesResult;
+
+        }
+
+        private void XMLfeldolgozo()
+        {
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                RateData rd = new RateData();
+                Rates.Add(rd);
+
+                rd.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rd.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0) rd.Value = value / unit;
+            }
+
 
         }
     }
