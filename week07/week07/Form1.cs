@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,56 +19,58 @@ namespace week07
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
         BindingList<string> Currencies = new BindingList<string>();
-        string result;
+        
         
 
         public Form1()
         {
             InitializeComponent();
-            GetExchangeRates();
             GetCurrencies();
-            XMLfeldolgozo();            
-            ShowDataOnChart();
+            comboBox1.DataSource = Currencies;
             RefreshData();
-            comboBox1.DataSource = Currencies;  
+             
 
         }
 
 
-        private void GetExchangeRates()
+        private string GetExchangeRates()
         {
+            
+
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = comboBox1.SelectedItem.ToString(),
-                startDate = dateTimePicker1.Value.ToString(),
-                endDate = dateTimePicker2.Value.ToString()
+                startDate = dateTimePicker1.Value.ToString("yyyy-MM-dd"),
+                endDate = dateTimePicker2.Value.ToString("yyyy-MM-dd")
             };
 
             var response = mnbService.GetExchangeRates(request);
-            result = response.GetExchangeRatesResult;
-
+            string result = response.GetExchangeRatesResult;
+            File.WriteAllText("export.xml", result);
+            return result;
         }
 
-        private void XMLfeldolgozo()
+        private void XMLfeldolgozo(string input)
         {
 
             XmlDocument xml = new XmlDocument();
-            xml.LoadXml(result);
+            xml.LoadXml(input);
             foreach (XmlElement element in xml.DocumentElement)
             {
-                RateData rd = new RateData();
-                Rates.Add(rd);
+                RateData rd = new RateData();                
 
                 rd.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null) continue;
                 rd.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
                 var value = decimal.Parse(childElement.InnerText);
                 if (unit != 0) rd.Value = value / unit;
+                Rates.Add(rd);
             }
 
 
@@ -94,48 +97,42 @@ namespace week07
         private void RefreshData()
         {
             Rates.Clear();
+            if (comboBox1.SelectedItem == null) return;
+            string xmlExRates= GetExchangeRates();
+            
+            XMLfeldolgozo(xmlExRates);
+            ShowDataOnChart();
+            
             dataGridView1.DataSource = Rates;
             chartRateData.DataSource = Rates;
             
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            RefreshData();
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            RefreshData();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshData();
-        }
+        
 
         private void GetCurrencies()
         {
+            
             var mnbService = new MNBArfolyamServiceSoapClient();
             var request = new GetCurrenciesRequestBody();      
                      
             var response = mnbService.GetCurrencies(request);
-            result = response.GetCurrenciesResult;
+            string result = response.GetCurrenciesResult;
+            File.WriteAllText("valutak", result);
 
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(result);
-            foreach (XmlElement element in xml.DocumentElement)
-            {
-                
-                var childElement = (XmlElement)element.ChildNodes[0];
-                if (childElement == null)
-                    continue;
-                var elem = childElement.InnerText;
-                Currencies.Add(elem);
+            XmlDocument vxml = new XmlDocument();
+            vxml.LoadXml(result);
+            foreach (XmlElement element in vxml.DocumentElement.FirstChild.ChildNodes)
+            {                            
+                                
+                Currencies.Add(element.InnerText);
             }
 
         }
 
-        
+        private void filterChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
