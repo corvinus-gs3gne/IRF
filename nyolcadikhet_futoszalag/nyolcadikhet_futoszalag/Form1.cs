@@ -1,4 +1,5 @@
-﻿using nyolcadikhet_futoszalag.Entities;
+﻿using nyolcadikhet_futoszalag.Abstractions;
+using nyolcadikhet_futoszalag.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,10 @@ namespace nyolcadikhet_futoszalag
 {
     public partial class Form1 : Form
     {
-        private List<Ball> _balls = new List<Ball>();
-        private BallFactory _factory;
+        private List<Toy> _toys = new List<Toy>();
+        private IToyFactory _factory;
 
-        public BallFactory Factory
+        public IToyFactory Factory
         {
             get { return _factory; }
             set { _factory = value; }
@@ -30,30 +31,30 @@ namespace nyolcadikhet_futoszalag
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var ball = Factory.CreateNew();
-            _balls.Add(ball);            
-            ball.Left = -ball.Width;
-            MainPanel.Controls.Add(ball);
+            var toy = Factory.CreateNew();
+            _toys.Add(toy);            
+            toy.Left = -toy.Width;
+            MainPanel.Controls.Add(toy);
         }
 
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var MaxPosition = 0;
-            foreach (var ball in _balls)
+            foreach (var toy in _toys)
             {
-                ball.MoveBall();
-                if (ball.Left > MaxPosition)
+                toy.MoveToy();
+                if (toy.Left > MaxPosition)
                 {
-                    MaxPosition = ball.Left;
+                    MaxPosition = toy.Left;
                 }
             }
 
             if (MaxPosition > 1000 )
             {
-                var oldestBall = _balls[0];
-                MainPanel.Controls.Remove(oldestBall);
-                _balls.Remove(oldestBall);
+                var oldestToy = _toys[0];
+                MainPanel.Controls.Remove(oldestToy);
+                _toys.Remove(oldestToy);
             }
         }
 
