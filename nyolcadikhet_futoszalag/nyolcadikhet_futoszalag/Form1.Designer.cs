@@ -37,6 +37,9 @@ namespace nyolcadikhet_futoszalag
             this.ballButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.PresentButton = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
+            this.btnRibbonColor = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +48,9 @@ namespace nyolcadikhet_futoszalag
             this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPanel.Controls.Add(this.btnRibbonColor);
+            this.MainPanel.Controls.Add(this.btnBoxColor);
+            this.MainPanel.Controls.Add(this.PresentButton);
             this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.label1);
             this.MainPanel.Controls.Add(this.ballButton);
@@ -102,9 +108,40 @@ namespace nyolcadikhet_futoszalag
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // PresentButton
+            // 
+            this.PresentButton.Location = new System.Drawing.Point(213, 14);
+            this.PresentButton.Name = "PresentButton";
+            this.PresentButton.Size = new System.Drawing.Size(75, 23);
+            this.PresentButton.TabIndex = 4;
+            this.PresentButton.Text = "Present";
+            this.PresentButton.UseVisualStyleBackColor = true;
+            this.PresentButton.Click += new System.EventHandler(this.PresentButton_Click);
+            // 
+            // btnBoxColor
+            // 
+            this.btnBoxColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnBoxColor.Location = new System.Drawing.Point(213, 50);
+            this.btnBoxColor.Name = "btnBoxColor";
+            this.btnBoxColor.Size = new System.Drawing.Size(75, 23);
+            this.btnBoxColor.TabIndex = 5;
+            this.btnBoxColor.Text = "Box color";
+            this.btnBoxColor.UseVisualStyleBackColor = false;
+            this.btnBoxColor.Click += new System.EventHandler(this.btnBoxColor_Click);
+            // 
+            // btnRibbonColor
+            // 
+            this.btnRibbonColor.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRibbonColor.Location = new System.Drawing.Point(213, 90);
+            this.btnRibbonColor.Name = "btnRibbonColor";
+            this.btnRibbonColor.Size = new System.Drawing.Size(75, 23);
+            this.btnRibbonColor.TabIndex = 6;
+            this.btnRibbonColor.Text = "Ribbon color";
+            this.btnRibbonColor.UseVisualStyleBackColor = false;
+            this.btnRibbonColor.Click += new System.EventHandler(this.btnRibbonColor_Click);
             // 
             // Form1
             // 
@@ -129,6 +166,9 @@ namespace nyolcadikhet_futoszalag
         private System.Windows.Forms.Button ballButton;
         private System.Windows.Forms.Button carButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRibbonColor;
+        private System.Windows.Forms.Button btnBoxColor;
+        private System.Windows.Forms.Button PresentButton;
     }
 }
 

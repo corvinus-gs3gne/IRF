@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace nyolcadikhet_futoszalag.Entities
 {
-    public class BallFactory : IToyFactory
+    class PresentFactory : IToyFactory
     {
-        public Color BallColor { get; set; }
+        public Color Boxcolor { get; set; }
+        public Color Ribboncolor { get; set; }
         public Toy CreateNew()
         {
-            return new Ball(BallColor);
+            return new Present(Ribboncolor, Boxcolor);
         }
     }
-
-
 }

@@ -15,8 +15,8 @@ namespace nyolcadikhet_futoszalag
     public partial class Form1 : Form
     {
         private List<Toy> _toys = new List<Toy>();
-        private IToyFactory _factory;
         private Toy _nextToy;
+        private IToyFactory _factory;
 
         public IToyFactory Factory
         {
@@ -32,6 +32,7 @@ namespace nyolcadikhet_futoszalag
         {
             InitializeComponent();
             Factory = new BallFactory();
+
         }
 
         private void createTimer_Tick(object sender, EventArgs e)
@@ -70,7 +71,10 @@ namespace nyolcadikhet_futoszalag
 
         private void ballButton_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = button1.BackColor
+            };
         }
 
         private void DisplayNext()
@@ -96,6 +100,39 @@ namespace nyolcadikhet_futoszalag
                 return;
             }
             button1.BackColor = colorPicker.Color;
+        }
+
+        private void btnBoxColor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = btnBoxColor.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            btnBoxColor.BackColor = colorPicker.Color;
+        }
+
+        private void btnRibbonColor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = btnRibbonColor.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            btnRibbonColor.BackColor = colorPicker.Color;
+        }
+
+        private void PresentButton_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                Ribboncolor = btnRibbonColor.BackColor,
+                Boxcolor= btnBoxColor.BackColor
+            };
         }
     }
 }
