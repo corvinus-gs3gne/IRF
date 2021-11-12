@@ -85,5 +85,17 @@ namespace nyolcadikhet_futoszalag
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = button1.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            button1.BackColor = colorPicker.Color;
+        }
     }
 }

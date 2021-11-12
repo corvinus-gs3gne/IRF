@@ -36,6 +36,7 @@ namespace nyolcadikhet_futoszalag
             this.carButton = new System.Windows.Forms.Button();
             this.ballButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@ namespace nyolcadikhet_futoszalag
             this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.label1);
             this.MainPanel.Controls.Add(this.ballButton);
             this.MainPanel.Controls.Add(this.carButton);
@@ -66,7 +68,7 @@ namespace nyolcadikhet_futoszalag
             // 
             // carButton
             // 
-            this.carButton.Location = new System.Drawing.Point(709, 31);
+            this.carButton.Location = new System.Drawing.Point(11, 11);
             this.carButton.Name = "carButton";
             this.carButton.Size = new System.Drawing.Size(75, 23);
             this.carButton.TabIndex = 0;
@@ -76,7 +78,7 @@ namespace nyolcadikhet_futoszalag
             // 
             // ballButton
             // 
-            this.ballButton.Location = new System.Drawing.Point(709, 85);
+            this.ballButton.Location = new System.Drawing.Point(107, 11);
             this.ballButton.Name = "ballButton";
             this.ballButton.Size = new System.Drawing.Size(75, 23);
             this.ballButton.TabIndex = 1;
@@ -87,11 +89,22 @@ namespace nyolcadikhet_futoszalag
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(709, 142);
+            this.label1.Location = new System.Drawing.Point(382, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Coming next:";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSalmon;
+            this.button1.Location = new System.Drawing.Point(12, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -115,6 +128,7 @@ namespace nyolcadikhet_futoszalag
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ballButton;
         private System.Windows.Forms.Button carButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 
