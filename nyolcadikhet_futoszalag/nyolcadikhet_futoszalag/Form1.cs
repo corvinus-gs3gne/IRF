@@ -50,10 +50,10 @@ namespace nyolcadikhet_futoszalag
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var _ball = Factory.CreateNew();
-            _balls.Add(_ball);
-            MainPanel.Controls.Add(_ball);
-            _ball.Left = -_ball.Width;
+            var ball = Factory.CreateNew();
+            _balls.Add(ball);
+            MainPanel.Controls.Add(ball);
+            ball.Left = -ball.Width;
         }
     }
 }

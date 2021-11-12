@@ -40,9 +40,9 @@ namespace nyolcadikhet_futoszalag
             this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPanel.Location = new System.Drawing.Point(0, -1);
+            this.MainPanel.Location = new System.Drawing.Point(1, 1);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(799, 450);
+            this.MainPanel.Size = new System.Drawing.Size(787, 437);
             this.MainPanel.TabIndex = 0;
             // 
             // createTimer
