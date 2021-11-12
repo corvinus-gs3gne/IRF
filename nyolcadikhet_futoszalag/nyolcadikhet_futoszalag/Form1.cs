@@ -32,7 +32,7 @@ namespace nyolcadikhet_futoszalag
         public Form1()
         {
             InitializeComponent();
-            Factory = new BallFactory();
+            Factory = new CarFactory();
             
         }
     
