@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace nyolcadikhet_futoszalag.Entities
 {
-    class PresentFactory : IToyFactory
+    public class PresentFactory : IToyFactory
     {
         public Color Boxcolor { get; set; }
         public Color Ribboncolor { get; set; }

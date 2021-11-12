@@ -31,15 +31,15 @@ namespace nyolcadikhet_futoszalag
         {
             this.components = new System.ComponentModel.Container();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.btnRibbonColor = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
+            this.PresentButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ballButton = new System.Windows.Forms.Button();
+            this.carButton = new System.Windows.Forms.Button();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
-            this.carButton = new System.Windows.Forms.Button();
-            this.ballButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.PresentButton = new System.Windows.Forms.Button();
-            this.btnBoxColor = new System.Windows.Forms.Button();
-            this.btnRibbonColor = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,66 +60,16 @@ namespace nyolcadikhet_futoszalag
             this.MainPanel.Size = new System.Drawing.Size(887, 439);
             this.MainPanel.TabIndex = 0;
             // 
-            // createTimer
+            // btnRibbonColor
             // 
-            this.createTimer.Enabled = true;
-            this.createTimer.Interval = 3000;
-            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
-            // 
-            // conveyorTimer
-            // 
-            this.conveyorTimer.Enabled = true;
-            this.conveyorTimer.Interval = 10;
-            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
-            // 
-            // carButton
-            // 
-            this.carButton.Location = new System.Drawing.Point(11, 11);
-            this.carButton.Name = "carButton";
-            this.carButton.Size = new System.Drawing.Size(75, 23);
-            this.carButton.TabIndex = 0;
-            this.carButton.Text = "CAR";
-            this.carButton.UseVisualStyleBackColor = true;
-            this.carButton.Click += new System.EventHandler(this.carButton_Click);
-            // 
-            // ballButton
-            // 
-            this.ballButton.Location = new System.Drawing.Point(107, 11);
-            this.ballButton.Name = "ballButton";
-            this.ballButton.Size = new System.Drawing.Size(75, 23);
-            this.ballButton.TabIndex = 1;
-            this.ballButton.Text = "Ball";
-            this.ballButton.UseVisualStyleBackColor = true;
-            this.ballButton.Click += new System.EventHandler(this.ballButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(382, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Coming next:";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSalmon;
-            this.button1.Location = new System.Drawing.Point(12, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // PresentButton
-            // 
-            this.PresentButton.Location = new System.Drawing.Point(213, 14);
-            this.PresentButton.Name = "PresentButton";
-            this.PresentButton.Size = new System.Drawing.Size(75, 23);
-            this.PresentButton.TabIndex = 4;
-            this.PresentButton.Text = "Present";
-            this.PresentButton.UseVisualStyleBackColor = true;
-            this.PresentButton.Click += new System.EventHandler(this.PresentButton_Click);
+            this.btnRibbonColor.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRibbonColor.Location = new System.Drawing.Point(213, 90);
+            this.btnRibbonColor.Name = "btnRibbonColor";
+            this.btnRibbonColor.Size = new System.Drawing.Size(75, 23);
+            this.btnRibbonColor.TabIndex = 6;
+            this.btnRibbonColor.Text = "Ribbon color";
+            this.btnRibbonColor.UseVisualStyleBackColor = false;
+            this.btnRibbonColor.Click += new System.EventHandler(this.btnRibbonColor_Click);
             // 
             // btnBoxColor
             // 
@@ -132,16 +82,66 @@ namespace nyolcadikhet_futoszalag
             this.btnBoxColor.UseVisualStyleBackColor = false;
             this.btnBoxColor.Click += new System.EventHandler(this.btnBoxColor_Click);
             // 
-            // btnRibbonColor
+            // PresentButton
             // 
-            this.btnRibbonColor.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnRibbonColor.Location = new System.Drawing.Point(213, 90);
-            this.btnRibbonColor.Name = "btnRibbonColor";
-            this.btnRibbonColor.Size = new System.Drawing.Size(75, 23);
-            this.btnRibbonColor.TabIndex = 6;
-            this.btnRibbonColor.Text = "Ribbon color";
-            this.btnRibbonColor.UseVisualStyleBackColor = false;
-            this.btnRibbonColor.Click += new System.EventHandler(this.btnRibbonColor_Click);
+            this.PresentButton.Location = new System.Drawing.Point(213, 14);
+            this.PresentButton.Name = "PresentButton";
+            this.PresentButton.Size = new System.Drawing.Size(75, 23);
+            this.PresentButton.TabIndex = 4;
+            this.PresentButton.Text = "Present";
+            this.PresentButton.UseVisualStyleBackColor = true;
+            this.PresentButton.Click += new System.EventHandler(this.PresentButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSalmon;
+            this.button1.Location = new System.Drawing.Point(12, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(382, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Coming next:";
+            // 
+            // ballButton
+            // 
+            this.ballButton.Location = new System.Drawing.Point(107, 11);
+            this.ballButton.Name = "ballButton";
+            this.ballButton.Size = new System.Drawing.Size(75, 23);
+            this.ballButton.TabIndex = 1;
+            this.ballButton.Text = "Ball";
+            this.ballButton.UseVisualStyleBackColor = true;
+            this.ballButton.Click += new System.EventHandler(this.ballButton_Click);
+            // 
+            // carButton
+            // 
+            this.carButton.Location = new System.Drawing.Point(11, 11);
+            this.carButton.Name = "carButton";
+            this.carButton.Size = new System.Drawing.Size(75, 23);
+            this.carButton.TabIndex = 0;
+            this.carButton.Text = "CAR";
+            this.carButton.UseVisualStyleBackColor = true;
+            this.carButton.Click += new System.EventHandler(this.carButton_Click);
+            // 
+            // createTimer
+            // 
+            this.createTimer.Enabled = true;
+            this.createTimer.Interval = 3000;
+            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
+            // 
+            // conveyorTimer
+            // 
+            this.conveyorTimer.Enabled = true;
+            this.conveyorTimer.Interval = 10;
+            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
             // Form1
             // 

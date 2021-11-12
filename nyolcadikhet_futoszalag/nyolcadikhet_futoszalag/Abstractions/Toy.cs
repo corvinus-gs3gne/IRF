@@ -12,7 +12,7 @@ namespace nyolcadikhet_futoszalag.Abstractions
     {
         public Toy()
         {
-            AutoSize = true;
+            AutoSize = false;
             Width = 50;
             Height = 50;
             Paint += Ball_Paint;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace nyolcadikhet_futoszalag.Entities
 {
-    class CarFactory : IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy CreateNew()
         {

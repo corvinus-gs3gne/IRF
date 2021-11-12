@@ -28,18 +28,21 @@ namespace nyolcadikhet_futoszalag
             }
         }
 
+
         public Form1()
         {
             InitializeComponent();
             Factory = new BallFactory();
-
+            
         }
+    
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
             var toy = Factory.CreateNew();
-            _toys.Add(toy);
+            toy.Top = btnRibbonColor.Top + btnRibbonColor.Height + 20; 
             toy.Left = -toy.Width;
+            _toys.Add(toy);
             MainPanel.Controls.Add(toy);
         }
 
@@ -81,13 +84,12 @@ namespace nyolcadikhet_futoszalag
         {
             if (_nextToy != null)
             {
-                Controls.Remove(_nextToy);
-                _nextToy = Factory.CreateNew();
-                _nextToy.Top = label1.Top + label1.Height + 20;
-                _nextToy.Left = label1.Left;
-                Controls.Add(_nextToy);
+                MainPanel.Controls.Remove(_nextToy);               
             }
-
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = label1.Top + label1.Height + 20;
+            _nextToy.Left = label1.Left;
+            MainPanel.Controls.Add(_nextToy);
         }
 
         private void button1_Click(object sender, EventArgs e)
