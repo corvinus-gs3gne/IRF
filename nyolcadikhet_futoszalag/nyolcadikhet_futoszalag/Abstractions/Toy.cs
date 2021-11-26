@@ -15,11 +15,11 @@ namespace nyolcadikhet_futoszalag.Abstractions
             AutoSize = false;
             Width = 50;
             Height = 50;
-            Paint += Ball_Paint;
+            Paint += Toy_Paint;
 
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        private void Toy_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
         }

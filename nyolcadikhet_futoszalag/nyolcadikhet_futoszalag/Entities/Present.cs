@@ -22,7 +22,7 @@ namespace nyolcadikhet_futoszalag.Entities
         {
             g.FillRectangle(BoxColor, 0, 0, Width, Height);
             g.FillRectangle(RibbonColor, (Width / 5)*2, 0, Width/5, Height);
-            g.FillRectangle(RibbonColor, 0, (Width/5)*2, Width, Height/5);
+            g.FillRectangle(RibbonColor, 0, (Height/5)*2, Width, Height/5);
         }
     }
 }

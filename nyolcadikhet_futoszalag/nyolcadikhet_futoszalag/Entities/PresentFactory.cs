@@ -10,11 +10,11 @@ namespace nyolcadikhet_futoszalag.Entities
 {
     public class PresentFactory : IToyFactory
     {
-        public Color Boxcolor { get; set; }
-        public Color Ribboncolor { get; set; }
+        public Color BoxColor { get; set; }
+        public Color RibbonColor { get; set; }
         public Toy CreateNew()
         {
-            return new Present(Ribboncolor, Boxcolor);
+            return new Present(RibbonColor, BoxColor);
         }
     }
 }

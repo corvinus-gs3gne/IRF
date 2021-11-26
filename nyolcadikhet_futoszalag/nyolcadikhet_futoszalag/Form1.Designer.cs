@@ -69,7 +69,7 @@ namespace nyolcadikhet_futoszalag
             this.btnRibbonColor.TabIndex = 6;
             this.btnRibbonColor.Text = "Ribbon color";
             this.btnRibbonColor.UseVisualStyleBackColor = false;
-            this.btnRibbonColor.Click += new System.EventHandler(this.btnRibbonColor_Click);
+            this.btnRibbonColor.Click += new System.EventHandler(this.Coloring);
             // 
             // btnBoxColor
             // 
@@ -80,7 +80,7 @@ namespace nyolcadikhet_futoszalag
             this.btnBoxColor.TabIndex = 5;
             this.btnBoxColor.Text = "Box color";
             this.btnBoxColor.UseVisualStyleBackColor = false;
-            this.btnBoxColor.Click += new System.EventHandler(this.btnBoxColor_Click);
+            this.btnBoxColor.Click += new System.EventHandler(this.Coloring);
             // 
             // PresentButton
             // 
@@ -100,7 +100,7 @@ namespace nyolcadikhet_futoszalag
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Coloring);
             // 
             // label1
             // 

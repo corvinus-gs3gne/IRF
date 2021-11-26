@@ -94,47 +94,40 @@ namespace nyolcadikhet_futoszalag
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            var colorPicker = new ColorDialog();
-            colorPicker.Color = button1.BackColor;
-            if (colorPicker.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            button1.BackColor = colorPicker.Color;
+
         }
 
         private void btnBoxColor_Click(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            var colorPicker = new ColorDialog();
-            colorPicker.Color = btnBoxColor.BackColor;
-            if (colorPicker.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            btnBoxColor.BackColor = colorPicker.Color;
+
         }
 
         private void btnRibbonColor_Click(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            var colorPicker = new ColorDialog();
-            colorPicker.Color = btnRibbonColor.BackColor;
-            if (colorPicker.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            btnRibbonColor.BackColor = colorPicker.Color;
+
         }
+
+
 
         private void PresentButton_Click(object sender, EventArgs e)
         {
             Factory = new PresentFactory
             {
-                Ribboncolor = btnRibbonColor.BackColor,
-                Boxcolor= btnBoxColor.BackColor
+                RibbonColor = btnRibbonColor.BackColor,
+                BoxColor= btnBoxColor.BackColor
             };
+        }
+
+        private void Coloring(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            button.BackColor = colorPicker.Color;
         }
     }
 }
