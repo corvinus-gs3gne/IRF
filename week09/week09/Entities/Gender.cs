@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace week09.Entities
 {
-    class Gender
+    public enum Gender
     {
+        Male = 1,
+        Female = 2
     }
 }

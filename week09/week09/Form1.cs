@@ -18,16 +18,21 @@ namespace week09
         List<Person> Population = null;
         List<Birthprobability> BirthProbabilities = null;
         List<DeathProbability> DeathProbabilities = null;
+        
         public Form1()
         {
             InitializeComponent();
-            
+
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+            
+        }
 
-            Population = GetPopulation(@"C:\Temp\nép-teszt.csv");
+        private void StartSimulation(int endYear, string csvPath)
+        {
+            Population = GetPopulation(csvPath);
 
-            for (int year = 2005; year < 2024; year++)
+            for (int year = 2005; year < endYear; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -35,19 +40,36 @@ namespace week09
                 }
 
                 int nbrOfMales = (from x in Population
-                                  where x.Gender = Gender.Male && x.IsAlive
-                                  select x).count;
+                                  where x.Gender == Gender.Male && x.IsAlive
+                                  select x).Count();
 
                 int nbrOfFemales = (from x in Population
-                                  where x.Gender = Gender.Female && x.IsAlive
-                                  select x).count;
+                                    where x.Gender == Gender.Female && x.IsAlive
+                                    select x).Count();
+
+                
 
                 Console.WriteLine(string.Format("Év: {0}\nFiúk: {1}\nLányok: {2}\n",
                     year,
                     nbrOfMales,
                     nbrOfFemales));
+
+                
             }
+
+            Displayresults(year, nbrOfMales, nbrOfFemales);
+
         }
+
+        private void DisplayResults(int year, int nbrOfMales, int nbrOfFemales)
+        {
+            RichTextBox.(string.Format("Év: {0}\nFiúk: {1}\nLányok: {2}\n",
+                    year,
+                    nbrOfMales,
+                    nbrOfFemales));
+
+        }
+
 
         private void SimStep(int year, Person person)
         {
@@ -107,11 +129,11 @@ namespace week09
 
         }
 
-        public List<Person> GetBirthProbabilities(string csvpath)
+        public List<Birthprobability> GetBirthProbabilities(string csvPath)
         {
             List<Birthprobability> birthProbability = new List<Birthprobability>();
 
-            using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
+            using (StreamReader sr = new StreamReader(csvPath, Encoding.Default))
             {
                 while (!sr.EndOfStream)
                 {
@@ -128,25 +150,47 @@ namespace week09
             return birthProbability;
         }
 
-        public List<DeathProbability> GetBirthProbabilities(string csvpath)
+        public List<DeathProbability> GetDeathProbabilities(string csvPath)
         {
-            List<Birthprobability> birthProbability = new List<Birthprobability>();
+            List<DeathProbability> deathProbability = new List<DeathProbability>();
 
-            using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
+            using (StreamReader sr = new StreamReader(csvPath, Encoding.Default))
             {
                 while (!sr.EndOfStream)
                 {
                     var line = sr.ReadLine().Split(';');
-                    birthProbability.Add(new Birthprobability()
+                    deathProbability.Add(new DeathProbability()
                     {
                         Age = byte.Parse(line[0]),
-                        NbrOfChildren = int.Parse(line[2]),
+                        Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
                         P = double.Parse(line[2])
                     });
                 }
             }
 
-            return birthProbability;
+            return deathProbability;
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.FileName = textBoxFile.Text;
+
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            textBoxFile.Text = ofd.FileName;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            StartSimulation((int)nuUpD.Value, textBoxFile.Text);
+
+        }
+
+
+
     }
 }
