@@ -31,8 +31,9 @@ namespace week09
         private void StartSimulation(int endYear, string csvPath)
         {
             Population = GetPopulation(csvPath);
+            var gy = new List<int>();
 
-            for (int year = 2005; year < endYear; year++)
+            for (int year = 2005; year <= endYear; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -54,19 +55,26 @@ namespace week09
                     nbrOfMales,
                     nbrOfFemales));
 
+
+                DisplayResults(year, nbrOfMales, nbrOfFemales);
+
                 
             }
 
-            Displayresults(year, nbrOfMales, nbrOfFemales);
+            richTextBox1.Text += "-------------------------------------------------------------------\n";
 
         }
 
+        
         private void DisplayResults(int year, int nbrOfMales, int nbrOfFemales)
         {
-            RichTextBox.(string.Format("Év: {0}\nFiúk: {1}\nLányok: {2}\n",
+            
+            richTextBox1.Text+= (string.Format("Év: {0}\nFiúk: {1}\nLányok: {2}\n",
                     year,
                     nbrOfMales,
                     nbrOfFemales));
+
+
 
         }
 
@@ -141,7 +149,7 @@ namespace week09
                     birthProbability.Add(new Birthprobability()
                     {
                         Age = byte.Parse(line[0]),
-                        NbrOfChildren = int.Parse(line[2]),
+                        NbrOfChildren = int.Parse(line[1]),
                         P= double.Parse(line[2])
                     });
                 }
